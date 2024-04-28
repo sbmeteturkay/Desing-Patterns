@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace SMTD.Templalets.DesingPatterns.DependensyInversion.DependencyInjection
+namespace SMTD.Templalets.DesingPatterns.DependencyInversion.DependencyInjection
 {
     [AttributeUsage(AttributeTargets.Field|AttributeTargets.Method)]
     public sealed class InjectAttribute : Attribute
@@ -51,11 +51,7 @@ namespace SMTD.Templalets.DesingPatterns.DependensyInversion.DependencyInjection
             foreach (var injectableField in injectableFields)
             {
                 var fieldType = injectableField.FieldType;
-                var resolvedInstance = Resolve(fieldType);
-                if (resolvedInstance == null)
-                {
-                    throw new Exception($"Failed to resolve {fieldType.Name} for {type.Name}");
-                }
+                var resolvedInstance = Resolve(fieldType) ?? throw new Exception($"Failed to resolve {fieldType.Name} for {type.Name}");
                 injectableField.SetValue(instance, resolvedInstance);
                 Debug.Log($"Field Injected {fieldType.Name} into {type.Name}");
             }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SMTD.Templalets.DesingPatterns.DependensyInversion.DependencyInjection.Demo
+namespace SMTD.Templalets.DesingPatterns.DependencyInversion.DependencyInjection.Demo
 {
     public class ClassB:MonoBehaviour {
     
